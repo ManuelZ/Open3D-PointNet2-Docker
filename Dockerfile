@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get -y install git xorg-dev libglu1-mesa-dev
+  apt-get -y install git xorg-dev libglu1-mesa-dev python3-pip
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
