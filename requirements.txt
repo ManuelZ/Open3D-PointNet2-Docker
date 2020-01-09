@@ -1,3 +1,4 @@
 matplotlib
 scikit-learn
 pykitti
+tensorflow-gpu==1.13.2
