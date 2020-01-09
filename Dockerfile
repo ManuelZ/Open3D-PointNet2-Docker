@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget gnupg2
 
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
