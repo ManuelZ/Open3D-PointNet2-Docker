@@ -1,7 +1,9 @@
 FROM ubuntu:18.04
 
+# TODO, move things to the /opt folder
+
 # Requirements for the git repository
-ADD ./requirements.txt ./requirements.txt
+ADD ./requirements.txt /tmp/requirements.txt
 
 # Tensorflow requirements
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
@@ -16,7 +18,7 @@ RUN apt-get update && \
 RUN apt-get install -y libnvinfer6 libnvinfer-dev
 
 # Install tensorflow with gpu support
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
 
 # Requirements for the git repository
 RUN apt-get update && \
@@ -24,9 +26,13 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
-WORKDIR Open3D-PointNet2-Semantic3D
+#WORKDIR Open3D-PointNet2-Semantic3D
 
-RUN pip3 install -r requirements.txt
+# Install the repository requirements
+RUN pip3 install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
-ENV name Manuel Zanutelli
-ENTRYPOINT echo "Hello, $name"
+RUN apt-get install -y x11vnc xvfb 
+RUN mkdir ~/.vnc
+RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
