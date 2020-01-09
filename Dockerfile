@@ -1,6 +1,13 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y wget gnupg2
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+
+RUN apt-get update && 
+    apt-get install -y wget gnupg2 git python3-pip  &&
+    # Requirements for Open3D
+    apt-get install -y xorg-dev libglu1-mesa-dev 
+
 
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
@@ -19,9 +26,6 @@ RUN apt-get install -y libnvinfer6 libnvinfer-dev
 
 # Install tensorflow with gpu support
 RUN pip3 install -r /tmp/requirements.txt
-
-# Requirements for the git repository
-RUN apt-get -y install git xorg-dev libglu1-mesa-dev python3-pip
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
