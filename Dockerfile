@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-# TODO, move things to the /opt folder
+RUN apt-get update && apt-get install wget
 
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
@@ -21,8 +21,7 @@ RUN apt-get install -y libnvinfer6 libnvinfer-dev
 RUN pip3 install -r /tmp/requirements.txt
 
 # Requirements for the git repository
-RUN apt-get update && \
-    apt-get -y install git xorg-dev libglu1-mesa-dev python3-pip
+RUN apt-get -y install git xorg-dev libglu1-mesa-dev python3-pip
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
