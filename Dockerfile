@@ -3,8 +3,8 @@ FROM ubuntu:18.04
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 
-RUN apt-get update && 
-    apt-get install -y wget gnupg2 git python3-pip  &&
+RUN apt-get update && \
+    apt-get install -y wget gnupg2 git python3-pip  && \
     # Requirements for Open3D
     apt-get install -y xorg-dev libglu1-mesa-dev 
 
