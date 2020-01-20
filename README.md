@@ -97,7 +97,7 @@ sudo docker run -it \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
  test
 
-sudo docker run -it --rm --env DISPLAY=$DISPLAY --volume $XAUTHORITY:/root/.Xauthority --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" test
+sudo docker run -u $(id -u):$(id -g) -it --rm --env DISPLAY=$DISPLAY --volume $XAUTHORITY:/root/.Xauthority --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" test
 
 # Remove all stopped containers
 
