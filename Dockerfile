@@ -29,7 +29,9 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends cuda-10-1 libcudnn7 libcudnn7-dev
 
 # Install TensorRT. Requires that libcudnn7 is installed above.
-RUN apt-get install -y --no-install-recommends  libnvinfer6 libnvinfer-dev
+RUN apt-get install -y --no-install-recommends libnvinfer6 libnvinfer-dev
+
+RUN apt-get install -y --no-install-recommends python-setuptools
 
 # Install tensorflow with gpu support
 RUN pip3 install -r /tmp/requirements.txt
