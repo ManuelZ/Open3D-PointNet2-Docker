@@ -106,3 +106,8 @@ sudo docker container prune
 # Remove all images without at least one container associated to them.
 
 sudo docker image prune -a
+
+# RUn official Tensorflow Docker with GPU support
+
+sudo docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu \
+ python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
