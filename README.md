@@ -98,3 +98,11 @@ sudo docker run -it \
  test
 
 sudo docker run -it --rm --env DISPLAY=$DISPLAY --volume $XAUTHORITY:/root/.Xauthority --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" test
+
+# Remove all stopped containers
+
+sudo docker container prune
+
+# Remove all images without at least one container associated to them.
+
+sudo docker image prune -a

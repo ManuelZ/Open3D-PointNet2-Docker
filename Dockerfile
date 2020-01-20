@@ -45,8 +45,6 @@ RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
-RUN apt-get install -y --no-install-recommends x11vnc xvfb 
-
 COPY entrypoint.sh /entrypoint.sh
 
 RUN apt-get install -y --no-install-recommends firefox
