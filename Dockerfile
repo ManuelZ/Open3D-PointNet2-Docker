@@ -20,7 +20,7 @@ RUN wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubu
 RUN apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 # Install NVIDIA driver
-RUN apt-get update && apt-get install --no-install-recommends nvidia-driver-440
+RUN apt-get update && apt-get install -y --no-install-recommends nvidia-driver-440
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y cuda-10-1 libcudnn7 libcudnn7-dev
