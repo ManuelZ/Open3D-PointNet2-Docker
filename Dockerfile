@@ -34,18 +34,19 @@ RUN apt-get install -y --no-install-recommends libnvinfer6 libnvinfer-dev
 RUN apt-get install -y --no-install-recommends python3-setuptools
 
 # Install tensorflow with gpu support
-RUN python3 -m pip  install -r /tmp/requirements.txt
+RUN python3 -m pip install -r /tmp/requirements.txt
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
 #WORKDIR Open3D-PointNet2-Semantic3D
 
 # Install the repository requirements
-RUN pip3 install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
+RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
 RUN apt-get install -y --no-install-recommends x11vnc xvfb 
+
 COPY entrypoint.sh /entrypoint.sh
 
 # Change Windows CRLF to Unix LF
