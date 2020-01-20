@@ -1,4 +1,4 @@
 matplotlib
 scikit-learn
+open3d
 pykitti
-
