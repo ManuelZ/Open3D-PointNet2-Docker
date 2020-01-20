@@ -31,10 +31,10 @@ RUN apt-get update && \
 # Install TensorRT. Requires that libcudnn7 is installed above.
 RUN apt-get install -y --no-install-recommends libnvinfer6 libnvinfer-dev
 
-RUN apt-get install -y --no-install-recommends python-setuptools
+RUN apt-get install -y --no-install-recommends python3-setuptools
 
 # Install tensorflow with gpu support
-RUN pip3 install -r /tmp/requirements.txt
+RUN python3 -m pip  install -r /tmp/requirements.txt
 
 RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 
