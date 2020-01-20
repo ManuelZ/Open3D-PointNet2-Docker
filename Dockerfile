@@ -8,6 +8,7 @@ RUN apt-get update && \
     # Requirements for Open3D
     apt-get install -y xorg-dev libglu1-mesa-dev 
 
+RUN export DEBIAN_FRONTEND=noninteractive
 
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
@@ -39,7 +40,7 @@ RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
 RUN pip3 install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-RUN export DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get install -y x11vnc xvfb 
 COPY entrypoint.sh /entrypoint.sh
 
