@@ -1,14 +1,15 @@
 FROM ubuntu:18.04
 
+RUN export DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 
 RUN apt-get update && \
-    apt-get install -y wget gnupg2 git python3-pip  && \
+    apt-get install -y --no-install-recommends  wget gnupg2 git python3-pip  && \
     # Requirements for Open3D
-    apt-get install -y xorg-dev libglu1-mesa-dev 
+    apt-get install -y --no-install-recommends xorg-dev libglu1-mesa-dev 
 
-RUN export DEBIAN_FRONTEND=noninteractive
 
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
@@ -21,13 +22,14 @@ RUN wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubu
 RUN apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 # Install NVIDIA driver
-RUN apt-get update && apt-get install -y --no-install-recommends nvidia-driver-440
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends nvidia-driver-440
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y cuda-10-1 libcudnn7 libcudnn7-dev
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends cuda-10-1 libcudnn7 libcudnn7-dev
 
 # Install TensorRT. Requires that libcudnn7 is installed above.
-RUN apt-get install -y libnvinfer6 libnvinfer-dev
+RUN apt-get install -y --no-install-recommends  libnvinfer6 libnvinfer-dev
 
 # Install tensorflow with gpu support
 RUN pip3 install -r /tmp/requirements.txt
@@ -41,7 +43,7 @@ RUN pip3 install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
-RUN apt-get install -y x11vnc xvfb 
+RUN apt-get install -y --no-install-recommends x11vnc xvfb 
 COPY entrypoint.sh /entrypoint.sh
 
 # Change Windows CRLF to Unix LF
