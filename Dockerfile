@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.1.0-gpu-py3
+FROM tensorflow/tensorflow:1.13.2-gpu-py3
 
 # To not be asked for confirmation during packages installation/upgrade
 RUN export DEBIAN_FRONTEND=noninteractive
