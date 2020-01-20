@@ -50,7 +50,7 @@ RUN apt-get install -y --no-install-recommends x11vnc xvfb
 COPY entrypoint.sh /entrypoint.sh
 
 # Change Windows CRLF to Unix LF
-RUN awk '{ sub("\r$", ""); print }' /entrypoint.sh > /entrypoint.sh
+#RUN awk '{ sub("\r$", ""); print }' /entrypoint.sh > /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
