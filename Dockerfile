@@ -33,9 +33,7 @@ RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 # Compile TF ops
 RUN apt-get install -y --no-install-recommends cmake
-RUN cd /Open3D-PointNet2-Semantic3D/tf_ops
-RUN mkdir build && cd build && RUN cmake ..
+RUN cd /Open3D-PointNet2-Semantic3D/tf_ops && mkdir build && cd build && cmake ..
 RUN make
-
 
 ENTRYPOINT ["/entrypoint.sh"]
