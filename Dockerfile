@@ -31,6 +31,8 @@ RUN python3 -m pip install -r /tmp/requirements.txt
 # Install the repository requirements
 RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
+# Compile TF ops
+RUN apt-get install -y --no-install-depends cmake
 RUN cd /Open3D-PointNet2-Semantic3D/tf_ops
 RUN mkdir build && cd build
 RUN cmake ..
