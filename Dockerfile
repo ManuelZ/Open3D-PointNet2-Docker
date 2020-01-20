@@ -12,23 +12,24 @@ RUN apt-get install -y --no-install-recommends wget gnupg2 git python3-pip pytho
 # Requirements for Open3D
 RUN apt-get install -y --no-install-recommends xorg-dev libglu1-mesa-dev 
 
-# Requirements for the git repository
-ADD ./requirements.txt /tmp/requirements.txt
-
-# Install Python libraries
-RUN python3 -m pip install -r /tmp/requirements.txt
-# Clone Open3D PointNet2++ example repo
-RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
-# Install the repository requirements
-RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
-
-RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-
 # To test the GUI share
 RUN apt-get install -y --no-install-recommends firefox
 # To share the GUI
 RUN touch /root/.Xauthority
 
+RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+
+# Clone Open3D PointNet2++ example repo
+RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D.git
+# Requirements for the git repository
+ADD ./requirements.txt /tmp/requirements.txt
+# Install Python requirements
+RUN python3 -m pip install -r /tmp/requirements.txt
+# Install the repository requirements
+RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
+
+
 ENTRYPOINT ["/entrypoint.sh"]
