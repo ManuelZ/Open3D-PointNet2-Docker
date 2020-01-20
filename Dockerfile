@@ -24,11 +24,11 @@ RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
-COPY entrypoint.sh /entrypoint.sh
-
+# To test the GUI share
 RUN apt-get install -y --no-install-recommends firefox
-
+# To share the GUI
 RUN touch /root/.Xauthority
 
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
