@@ -119,7 +119,7 @@ sudo docker image prune -a
 sudo docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu \
  python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 
-# Run docker with GUI cappabilities and GPU
+# Run docker with GUI cappabilities and GPU and mapping of a directory
 
 sudo docker run \
  --gpus all \
@@ -129,4 +129,5 @@ sudo docker run \
  --env DISPLAY=$DISPLAY \
  --volume $XAUTHORITY:/root/.Xauthority \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+ --volume /media/manuel/HD2:/opt/data \
  test
