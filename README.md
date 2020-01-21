@@ -22,13 +22,15 @@ sudo docker stop CONTAINER_NAME
 
 docker kill CONTAINER_ID
 
-#
+# Remove one or more containers
 
 sudo docker rm CONTAINER_NAME
 
 # List images
 
 sudo docker images
+
+# Remove one or more images
 
 docker rmi IMAGE_NAME
 
@@ -91,13 +93,18 @@ docker run --rm -ti -p 5900:5900 mydocker
 
 # Run docker with GUI cappabilities
 
-sudo docker run -it \
+sudo docker run \
+ -it \
+ --rm \
+ --user $(id -u):$(id -g) \
  --env DISPLAY=$DISPLAY \
-    --volume $XAUTHORITY:/root/.Xauthority \
+ --volume $XAUTHORITY:/root/.Xauthority \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
  test
 
-sudo docker run -u $(id -u):$(id -g) -it --rm --env DISPLAY=$DISPLAY --volume $XAUTHORITY:/root/.Xauthority --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" test
+# Run docker and map a directory
+
+docker run -v /host/directory:/container/directory test
 
 # Remove all stopped containers
 
@@ -107,7 +114,19 @@ sudo docker container prune
 
 sudo docker image prune -a
 
-# RUn official Tensorflow Docker with GPU support
+# Run and test official Tensorflow Docker with GPU support
 
 sudo docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu \
  python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+
+# Run docker with GUI cappabilities and GPU
+
+sudo docker run \
+ --gpus all \
+ -it \
+ --rm \
+ --user $(id -u):$(id -g) \
+ --env DISPLAY=$DISPLAY \
+ --volume $XAUTHORITY:/root/.Xauthority \
+ --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+ test
