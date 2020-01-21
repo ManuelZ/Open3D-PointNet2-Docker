@@ -33,9 +33,6 @@ RUN python3 -m pip install -r ./Open3D-PointNet2-Semantic3D/requirements.txt
 
 # Compile TF ops
 RUN apt-get install -y --no-install-recommends cmake
-RUN find / -name "libcuda.so.1"
-
-#ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=/usr/local/cuda-10.0/compat:$LD_LIBRARY_PATH
 RUN cd /Open3D-PointNet2-Semantic3D/tf_ops && \
     mkdir build && \
