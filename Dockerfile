@@ -1,8 +1,5 @@
 FROM tensorflow/tensorflow:1.13.2-gpu-py3
 
-# To not be asked for confirmation during packages installation/upgrade
-RUN export DEBIAN_FRONTEND=noninteractive
-
 # Upgrade packages
 RUN apt-get update && apt-get upgrade -y
 
