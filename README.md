@@ -1,6 +1,16 @@
-##### Docker image that creates an environment to run PointNet++ segmentation on Open3D
+# Docker environment to run PointNet++ segmentation on Open3D
 
-Project: https://github.com/intel-isl/Open3D-PointNet2-Semantic3D
+Setting an environment to run this example takes time, this Docker file should allow to have a reproducible environment.
+
+##### The project:
+
+https://github.com/intel-isl/Open3D-PointNet2-Semantic3D
+
+Clone this repo and:
+
+- Build the image
+- Create the container
+- Start the container
 
 ##### Build image
 
@@ -24,7 +34,7 @@ sudo docker create \
 
     sudo docker container start --interactive open3d-pointnet2-container
 
-##### Run docker with GUI cappabilities
+##### Run docker with only GUI cappabilities
 
 ```
 sudo docker run \
