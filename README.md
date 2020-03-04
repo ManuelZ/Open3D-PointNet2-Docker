@@ -15,9 +15,14 @@ sudo docker create \
  --env DISPLAY=$DISPLAY \
  --volume $XAUTHORITY:/root/.Xauthority \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
- --volume="/media/manuel/TOSHIBA EXT/data:/Open3D-PointNet2-Semantic3D/dataset/semantic_raw" \
+ --volume="/media/manuel/TOSHIBA EXT/Open3D-PointNet2-Semantic3D/dataset/semantic_raw:/Open3D-PointNet2-Semantic3D/dataset/semantic_raw" \
+ --name open3d-pointnet2-container \
  open3d-pointnet2
 ```
+
+##### Start an already created container
+
+    sudo docker container start -i CONTAINER_ID
 
 ##### Run docker with GUI cappabilities
 
@@ -29,12 +34,9 @@ sudo docker run \
  --env DISPLAY=$DISPLAY \
  --volume $XAUTHORITY:/root/.Xauthority \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+ --name open3d-pointnet2-container \
  open3d-pointnet2
 ```
-
-##### Start an already created container
-
-    sudo docker container start -i CONTAINER_ID
 
 ## Common container commands
 
