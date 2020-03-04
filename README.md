@@ -127,8 +127,8 @@ sudo docker create \
  --env DISPLAY=$DISPLAY \
  --volume $XAUTHORITY:/root/.Xauthority \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
- --volume /media/manuel/HD2/data:/Open3D-PointNet2-Semantic3D/dataset/semantic_raw \
- test
+ --volume="/media/manuel/TOSHIBA EXT/data:/Open3D-PointNet2-Semantic3D/dataset/semantic_raw" \
+ open3d-pointnet2
 
 # Start an already created container
 
