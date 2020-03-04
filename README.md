@@ -22,7 +22,7 @@ sudo docker create \
 
 ##### Start an already created container
 
-    sudo docker container start -i CONTAINER_ID
+    sudo docker container start --interactive open3d-pointnet2-container
 
 ##### Run docker with GUI cappabilities
 
