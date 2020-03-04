@@ -153,5 +153,3 @@ sudo docker run \
 ##### Pull image from Dockerhub
 
     docker pull IMAGE_NAME
-
-docker run ubuntu sleep 5
