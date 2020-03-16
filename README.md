@@ -48,6 +48,20 @@ sudo docker run \
  open3d-pointnet2
 ```
 
+## Common image commands
+
+##### List images
+
+    sudo docker images
+
+##### Remove one or more images
+
+    docker rmi IMAGE_NAME
+
+##### Remove all images without at least one container associated to them
+
+    sudo docker image prune -a
+
 ## Common container commands
 
 ##### List running containers
@@ -70,15 +84,9 @@ sudo docker run \
 
     sudo docker rm CONTAINER_NAME
 
-## Common images commands
+##### Remove all stopped containers
 
-##### List images
-
-    sudo docker images
-
-##### Remove one or more images
-
-    docker rmi IMAGE_NAME
+    sudo docker container prune
 
 ## Commands options - RUN
 
@@ -136,19 +144,6 @@ sudo docker run \
     sudo docker tag test mclzc/test
 
     sudo docker run --rm -ti -p 5900:5900 mydocker
-
-##### Remove all stopped containers
-
-    sudo docker container prune
-
-##### Remove all images without at least one container associated to them
-
-    sudo docker image prune -a
-
-##### Run and test official Tensorflow Docker with GPU support
-
-    sudo docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu \
-    python -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 
 ##### Pull image from Dockerhub
 
