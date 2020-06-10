@@ -20,7 +20,7 @@ RUN chmod +x /entrypoint.sh
 
 
 # Clone Open3D PointNet2++ example repo
-RUN git clone https://github.com/ManuelZ/Open3D-PointNet2-Semantic3D.git
+RUN git clone https://github.com/intel-isl/Open3D-PointNet2-Semantic3D
 # Requirements for the git repository
 ADD ./requirements.txt /tmp/requirements.txt
 # Install Python requirements
